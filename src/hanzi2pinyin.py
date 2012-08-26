@@ -36,8 +36,3 @@ def translate(hanzi, style=STYLE_LOWER, delimiter=' ', encoding='utf-8', firstle
             pinyin = pinyin[0]
         result += pinyin
     return result
-            
-
-if __name__ == '__main__':
-    
-    pass
