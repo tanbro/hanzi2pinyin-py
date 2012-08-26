@@ -10,5 +10,5 @@ import hanzi2pinyin
 
 
 if __name__ == '__main__':
-    print hanzi2pinyin.translate('王八蛋', style=hanzi2pinyin.STYLE_CAMEL, delimiter='', firstletter_only=True)
-    print hanzi2pinyin.translate('大美女')
+    print hanzi2pinyin.translate('要转换的汉字', style=hanzi2pinyin.STYLE_CAMEL, delimiter='', firstletter_only=True)
+    print hanzi2pinyin.translate(u'汉字')
