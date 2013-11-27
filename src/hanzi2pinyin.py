@@ -16,6 +16,11 @@ try:
     bytes
 except Exception:
     bytes = str
+# Python3 compatibility:  str is unicode in PY3k
+try:
+    unicode
+except Exception:
+    unicode = str
 
 # Load HanZi -> PinYin map file to a dict
 _map = json.loads(open(os.path.join(os.path.dirname(__file__), ('%s.json') % (os.path.splitext(os.path.basename(__file__))[0]))).read())
@@ -25,11 +30,11 @@ STYLE_LOWER = 2
 STYLE_UPPER = 3
 
 def translate(hanzi, style=STYLE_LOWER, delimiter=' ', encoding='utf-8', firstletter_only=False):
-    if type(hanzi) in types.StringTypes:
+    if isinstance(hanzi, (bytes, str, unicode)):
         if isinstance(hanzi, bytes):
             hanzi = hanzi.decode(encoding)
     else:
-        raise TypeError('parameter hanzi is not str or bytes')
+        raise TypeError('parameter hanzi is not a str, unicode or bytes')
     result = ''
     for hz_char in hanzi:
         if result:
